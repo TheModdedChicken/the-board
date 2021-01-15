@@ -6,6 +6,85 @@ fetch(`https://the-bagel.herokuapp.com/?data=messages`)
     .then(response => response.json())
     .then(data => {
 
+        var arrayData = [];
+
+        console.log(data);
+
+        for(var i in data)
+            arrayData.unshift(i);
+
+        console.log(arrayData);
+
+        arrayData.forEach(function (arrayItem) {
+            let bodyElement = document.body;
+
+            let messageCardElement = document.createElement('div');
+            let messageCard = document.createElement('canvas');
+            let messageContentContainer = document.createElement('div');
+            let messageAuthorContainer = document.createElement('div');
+        
+            let messageContentElement = document.createElement('p');
+            let messageAuthorElement = document.createElement('h3');
+        
+            messageCard.className = "message-card-canv";
+            messageCardElement.className = "message-card";
+            messageContentContainer.className = "message-content-container";
+            messageAuthorContainer.className = "message-author-container";
+        
+            messageContentElement.className = "message-content-element";
+            messageAuthorElement.className = "message-author-element";
+
+            messageCardElement.id = "message-card";
+
+            messageCardElement.style.top = step + 'px';
+
+            messageContentElement.innerText = data[arrayItem].message;
+            messageAuthorElement.innerText = data[arrayItem].author;
+            bodyElement.appendChild(messageCardElement);
+            messageCardElement.append(messageCard, messageContentContainer, messageAuthorContainer);
+
+            messageAuthorContainer.appendChild(messageAuthorElement);
+            messageContentContainer.appendChild(messageContentElement);
+            step += 200;
+
+            loaded += 1;
+        });
+/*
+        for (var i in arrayData) {
+
+            let bodyElement = document.body;
+
+            let messageCardElement = document.createElement('div');
+            let messageCard = document.createElement('canvas');
+            let messageContentContainer = document.createElement('div');
+            let messageAuthorContainer = document.createElement('div');
+        
+            let messageContentElement = document.createElement('p');
+            let messageAuthorElement = document.createElement('h3');
+        
+            messageCard.className = "message-card-canv";
+            messageCardElement.className = "message-card";
+            messageContentContainer.className = "message-content-container";
+            messageAuthorContainer.className = "message-author-container";
+        
+            messageContentElement.className = "message-content-element";
+            messageAuthorElement.className = "message-author-element";
+
+            messageCardElement.id = "message-card";
+
+            messageCardElement.style.top = step + 'px';
+
+            messageContentElement.innerText = data[i].message;
+            messageAuthorElement.innerText = data[i].author;
+            bodyElement.appendChild(messageCardElement);
+            messageCardElement.append(messageCard, messageContentContainer, messageAuthorContainer);
+
+            messageAuthorContainer.appendChild(messageAuthorElement);
+            messageContentContainer.appendChild(messageContentElement);
+            step += 200;
+
+            loaded += 1;
+        }
         for (var i in data) {
 
             let bodyElement = document.body;
@@ -41,6 +120,7 @@ fetch(`https://the-bagel.herokuapp.com/?data=messages`)
 
             loaded += 1;
         }
+        */
     });
 
 
