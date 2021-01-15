@@ -167,6 +167,10 @@ body {
     outline: none;
 }
 
+.sendButton:hover {
+    background: #3990d6;
+}
+
 .message-card {
     position: absolute;
     left: 800px;
