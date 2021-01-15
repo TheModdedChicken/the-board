@@ -6,7 +6,7 @@ fetch(`https://the-bagel.herokuapp.com/?data=messages`)
     .then(response => response.json())
     .then(data => {
 
-        var arrayData = [];
+        arrayData = [];
 
         console.log(data);
 
@@ -34,7 +34,7 @@ fetch(`https://the-bagel.herokuapp.com/?data=messages`)
             messageContentElement.className = "message-content-element";
             messageAuthorElement.className = "message-author-element";
 
-            messageCardElement.id = "message-card";
+            messageCardElement.id = `message-card-${arrayItem}`;
 
             messageCardElement.style.top = step + 'px';
 
@@ -130,8 +130,6 @@ function send() {
     var messageBox = document.getElementById('warningBox');
     var messageText = document.getElementById('warningText');
 
-    var allCards = document.getElementById('message-card');
-
     if (author.value === '' || message.value === '') {
         messageBox.style.visibility = 'visible';
         messageText.style.visibility = 'visible';
@@ -151,6 +149,8 @@ function send() {
         messageBox.style.visibility = 'visible';
         messageText.style.visibility = 'visible';
 
+        message.value = null;
+
         messageBox.style.color = '#29df418e';
         messageText.textContent = 'Message sent successfully!';
 
@@ -158,7 +158,7 @@ function send() {
             messageBox.style.visibility = 'hidden';
             messageText.style.visibility = 'hidden';
 
-            location.reload();
+            receive();
         }, 1500);
         return;
     }
@@ -167,10 +167,25 @@ function send() {
 function receive() {
     step = 350;
 
+    arrayData.forEach(function (arrayItem) {
+        var cardElement = document.getElementById(`message-card-${arrayItem}`)
+
+        cardElement.remove();
+    });
+
     fetch(`https://the-bagel.herokuapp.com/?data=messages`)
     .then(response => response.json())
     .then(data => {
-        for (var i in data) {
+        var arrayData = [];
+
+        console.log(data);
+
+        for(var i in data)
+            arrayData.unshift(i);
+
+        console.log(arrayData);
+
+        arrayData.forEach(function (arrayItem) {
             let bodyElement = document.body;
 
             let messageCardElement = document.createElement('div');
@@ -189,18 +204,22 @@ function receive() {
             messageContentElement.className = "message-content-element";
             messageAuthorElement.className = "message-author-element";
 
-            messageCardElement.id = "message-card";
+            messageCardElement.id = `message-card-${arrayItem}`;
 
             messageCardElement.style.top = step + 'px';
 
-            messageContentElement.innerText = data[i].message;
-            messageAuthorElement.innerText = data[i].author;
+            messageContentElement.innerText = data[arrayItem].message;
+            messageAuthorElement.innerText = data[arrayItem].author;
             bodyElement.appendChild(messageCardElement);
             messageCardElement.append(messageCard, messageContentContainer, messageAuthorContainer);
 
             messageAuthorContainer.appendChild(messageAuthorElement);
             messageContentContainer.appendChild(messageContentElement);
             step += 200;
-        }
+
+            loaded += 1;
+        });
+
+        return arrayData;
     });
 }
