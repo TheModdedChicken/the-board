@@ -1,9 +1,13 @@
 var step = 350;
 
+var loaded = 0;
+
 fetch(`https://the-bagel.herokuapp.com/?data=messages`)
     .then(response => response.json())
     .then(data => {
+
         for (var i in data) {
+
             let bodyElement = document.body;
 
             let messageCardElement = document.createElement('div');
@@ -22,6 +26,8 @@ fetch(`https://the-bagel.herokuapp.com/?data=messages`)
             messageContentElement.className = "message-content-element";
             messageAuthorElement.className = "message-author-element";
 
+            messageCardElement.id = "message-card";
+
             messageCardElement.style.top = step + 'px';
 
             messageContentElement.innerText = data[i].message;
@@ -32,6 +38,8 @@ fetch(`https://the-bagel.herokuapp.com/?data=messages`)
             messageAuthorContainer.appendChild(messageAuthorElement);
             messageContentContainer.appendChild(messageContentElement);
             step += 200;
+
+            loaded += 1;
         }
     });
 
@@ -40,7 +48,9 @@ function send() {
     var author = document.getElementById('authorBox');
     var message = document.getElementById('messageBox');
     var messageBox = document.getElementById('warningBox');
-    var messageText = document.getElementById('warningText')
+    var messageText = document.getElementById('warningText');
+
+    var allCards = document.getElementById('message-card');
 
     if (author.value === '' || message.value === '') {
         messageBox.style.visibility = 'visible';
@@ -67,11 +77,50 @@ function send() {
         setTimeout(function () {
             messageBox.style.visibility = 'hidden';
             messageText.style.visibility = 'hidden';
-        }, 5000);
+
+            location.reload();
+        }, 1500);
         return;
     }
 }
 
 function receive() {
+    step = 350;
 
+    fetch(`https://the-bagel.herokuapp.com/?data=messages`)
+    .then(response => response.json())
+    .then(data => {
+        for (var i in data) {
+            let bodyElement = document.body;
+
+            let messageCardElement = document.createElement('div');
+            let messageCard = document.createElement('canvas');
+            let messageContentContainer = document.createElement('div');
+            let messageAuthorContainer = document.createElement('div');
+        
+            let messageContentElement = document.createElement('p');
+            let messageAuthorElement = document.createElement('h3');
+        
+            messageCard.className = "message-card-canv";
+            messageCardElement.className = "message-card";
+            messageContentContainer.className = "message-content-container";
+            messageAuthorContainer.className = "message-author-container";
+        
+            messageContentElement.className = "message-content-element";
+            messageAuthorElement.className = "message-author-element";
+
+            messageCardElement.id = "message-card";
+
+            messageCardElement.style.top = step + 'px';
+
+            messageContentElement.innerText = data[i].message;
+            messageAuthorElement.innerText = data[i].author;
+            bodyElement.appendChild(messageCardElement);
+            messageCardElement.append(messageCard, messageContentContainer, messageAuthorContainer);
+
+            messageAuthorContainer.appendChild(messageAuthorElement);
+            messageContentContainer.appendChild(messageContentElement);
+            step += 200;
+        }
+    });
 }
