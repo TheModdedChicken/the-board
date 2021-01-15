@@ -1,0 +1,22 @@
+{
+  "name": "theboard",
+  "version": "1.0.0",
+  "description": "a board for note",
+  "main": "index.js",
+  "dependencies": {
+    "node": "^15.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "the-note-board"
+  },
+  "keywords": [
+    "github"
+  ],
+  "author": "TheModdedChicken",
+  "license": "ISC"
+}
