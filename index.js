@@ -2,11 +2,11 @@ function send() {
     var author = document.getElementById('authorBox');
     var message = document.getElementById('messageBox');
 
-    fetch(`http://localhost:4600/?author=${author.value}&text=${message.value}`);
+    fetch(`https://the-bagel.herokuapp.com/?author=${author.value}&text=${message.value}`);
 }
 
 function receive() {
-    fetch(`http://localhost:4600/?data=messages`)
+    fetch(`https://the-bagel.herokuapp.com/?data=messages`)
     .then(response => response.json())
     .then(data => {
         var result = [];

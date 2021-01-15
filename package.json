@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "a board for note",
   "main": "index.js",
-  "dependencies": {
-    "express": "^4.17.1",
-    "node": "^15.4.0"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "test": "echo \\\"Error: no test specified\\\" && exit 1"
