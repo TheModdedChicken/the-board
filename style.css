@@ -97,6 +97,10 @@ input, select {
 
 /* Custom Style */
 
+body {
+    background: #111111;
+}
+
 .messageBox {
     background-color: #e7f1fa;
     border: thick 100px #111111;
@@ -113,7 +117,7 @@ input, select {
     border-radius: 14px;
     position: absolute;
     left: 800px;
-    top: 100px;
+    top: 70px;
     resize: none;
     outline: none;
     overflow: hidden;
@@ -137,7 +141,7 @@ input, select {
     border-radius: 14px;
     position: absolute;
     left: 800px;
-    top: 295px;
+    top: 265px;
     resize: none;
     outline: none;
     overflow: hidden;
@@ -161,6 +165,68 @@ input, select {
     border-radius: 24px;
     position: absolute;
     left: 1030px;
-    top: 300px;
+    top: 270px;
     outline: none;
+}
+
+.message-card {
+    position: fixed;
+    left: 800px;
+    width: 325px;
+    height: 178px;
+    background: #2e2e2e;
+    border-radius: 14px;
+    border-color: #222222;
+}
+
+.message-content-container {
+    width: 325px;
+    height: 178px;
+}
+
+.message-card-canv {
+    background: #2e2e2e;
+    border-radius: 14px;
+    border-color: #222222;
+}
+
+.message-author-element {
+    position: absolute;
+    font-family: 'Inter';
+    font-weight: 400;
+    top: 150px;
+    left: 10px;
+    color: white;
+}
+
+.message-content-element {
+    position: absolute;
+    font-family: 'Inter';
+    font-weight: 200;
+    font-size: 14px;
+    top: 14px;
+    left: 10px;
+    color: white;
+    overflow-wrap: break-word;
+}
+
+.warningBox {
+    position: fixed;
+    left: 800px;
+    top: 10px;
+    width: 325px;
+    height: 50px;
+    background: #42a4f58e;
+    border-radius: 14px;
+    visibility: hidden;
+}
+
+.warningText {
+    position: fixed;
+    font-family: 'Inter';
+    font-weight: 500;
+    left: 855px;
+    top: 27px;
+    color: white;
+    visibility: hidden;
 }
