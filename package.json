@@ -4,6 +4,7 @@
   "description": "a board for note",
   "main": "index.js",
   "dependencies": {
+    "express": "^4.17.1",
     "node": "^15.4.0"
   },
   "devDependencies": {},
