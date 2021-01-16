@@ -1,14 +1,14 @@
 function login() {
     var Lusername = document.getElementById('login-username').value;
-    var Llpassword = document.getElementById('login-password').value;
+    var Lpassword = document.getElementById('login-password').value;
 
-    fetch(`https://the-bagel.herokuapp.com/?request=login&username=${Lusername}&password=${Llpassword}`)
+    fetch(`https://the-bagel.herokuapp.com/?request=login&username=${Lusername}&password=${Lpassword}`)
         .then(response => response.json())
         .then(data => {
-            var exdays = 7;
-            var d = new Date();
-            d.setTime(d.getTime() + (exdays*24*60*60*1000));
-            var expires = "expires="+ d.toUTCString();
-            document.cookie = "sessionKey=" + data.sessionKey + ";" + expires + ";path=/";
+            var now = new Date();
+            var time = now.getTime();
+            var expireTime = time + 1000*36000;
+            now.setTime(expireTime);
+            document.cookie = `sessionKey=${data.sessionKey};expires=`+now.toUTCString()+`;path=/`;
         });
 }

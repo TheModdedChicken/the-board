@@ -6,6 +6,29 @@ fetch(`https://the-bagel.herokuapp.com/?data=messages`)
     .then(response => response.json())
     .then(data => {
 
+        var sessionKeyC = getCookie("sessionKey");
+
+        if (sessionKeyC === '') {
+            console.log('Nope');
+            return;
+        }
+
+        var name = "sessionKey=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              sessionKey = c.substring(name.length, c.length);
+            }
+        }
+
+        fetch(`https://the-bagel.herokuapp.com/?request=sessionVerify&sessionKey=${sessionKey}`)
+
         arrayData = [];
 
         console.log(data);
