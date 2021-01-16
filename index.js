@@ -30,6 +30,8 @@ for(var i = 0; i <ca.length; i++) {
     
             console.log(arrayData);
 
+            console.log(status);
+
             if (status === 404) {
                 var sendButton = document.getElementById('sendButton');
                 var loginButton = document.getElementById('loginButton');
