@@ -20,7 +20,7 @@ for(var i = 0; i <ca.length; i++) {
 
       fetch(`https://the-bagel.herokuapp.com/?data=messages&sessionKey=${sessionKey}`)
         .then(response => response.json())
-        .then(data, response => {
+        .then((data, response) => {
             arrayData = [];
   
             console.log(data);
