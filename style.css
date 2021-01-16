@@ -114,6 +114,35 @@ body::-webkit-scrollbar-thumb {
     outline: 1px solid slategrey;
 }
 
+.back-button {
+    background-color:#42a4f5;
+    border: none;
+    color: white;
+    padding: 5px 12px;
+    align-self: left;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Inter';
+    font-weight: 800;
+    color: #000;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    position: absolute;
+    left: -25px;
+    width: 35px;
+    outline: none;
+
+    transform: translateX(0px);
+    transition: transform 150ms ease-in;
+}
+
+.back-button:hover {
+    transform: translateX(15px);
+}
+
 .messageBox {
     background-color: #e7f1fa;
     border: thick 100px #111111;
@@ -165,11 +194,12 @@ body::-webkit-scrollbar-thumb {
     border: none;
     color: white;
     padding: 10px 25px;
-    text-align: center;
+    text-align: right;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     font-family: 'Inter';
+    font-weight: 500;
     color: #000;
     margin: 4px 2px;
     cursor: pointer;
