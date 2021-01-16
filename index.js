@@ -119,12 +119,6 @@ function send() {
 function receive() {
     var step = 350;
 
-    arrayData.forEach(function (arrayItem) {
-        var cardElement = document.getElementById(`message-card-${arrayItem}`)
-
-        cardElement.remove();
-    });
-
     var name = "sessionKey=";
     var decodedCookie = decodeURIComponent(document.cookie);
     
@@ -150,6 +144,12 @@ function receive() {
                     arrayData.unshift(i);
         
                 console.log(arrayData);
+
+                arrayData.forEach(function (arrayItem) {
+                    var cardElement = document.getElementById(`message-card-${arrayItem}`)
+            
+                    cardElement.remove();
+                });
         
                 arrayData.forEach(function (arrayItem) {
                     let bodyElement = document.body;
