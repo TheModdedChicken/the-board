@@ -2,78 +2,81 @@ var step = 350;
 
 var loaded = 0;
 
-fetch(`https://the-bagel.herokuapp.com/?data=messages`)
+var name = "sessionKey=";
+var decodedCookie = decodeURIComponent(document.cookie);
+
+var ca = decodedCookie.split(';');
+for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      var sessionKey = c.substring(name.length, c.length);
+
+      fetch(`https://the-bagel.herokuapp.com/?data=messages&sessionKey=${sessionKey}`)
+        .then(response => response.json())
+        .then(data => {
+            arrayData = [];
+  
+            console.log(data);
+                
+            for(var i in data)
+                arrayData.unshift(i);
+    
+            console.log(arrayData);
+    
+            arrayData.forEach(function (arrayItem) {
+                let bodyElement = document.body;
+    
+                let messageCardElement = document.createElement('div');
+                let messageCard = document.createElement('canvas');
+                let messageContentContainer = document.createElement('div');
+                let messageAuthorContainer = document.createElement('div');
+            
+                let messageContentElement = document.createElement('p');
+                let messageAuthorElement = document.createElement('h3');
+            
+                messageCard.className = "message-card-canv";
+                messageCardElement.className = "message-card";
+                messageContentContainer.className = "message-content-container";
+                messageAuthorContainer.className = "message-author-container";
+            
+                messageContentElement.className = "message-content-element";
+                messageAuthorElement.className = "message-author-element";
+    
+                messageCardElement.id = `message-card-${arrayItem}`;
+    
+                messageCardElement.style.top = step + 'px';
+    
+                messageContentElement.innerText = data[arrayItem].message;
+                messageAuthorElement.innerText = data[arrayItem].author;
+                bodyElement.appendChild(messageCardElement);
+                messageCardElement.append(messageCard, messageContentContainer, messageAuthorContainer);
+    
+                messageAuthorContainer.appendChild(messageAuthorElement);
+                messageContentContainer.appendChild(messageContentElement);
+                step += 200;
+    
+                loaded += 1;
+            });
+        });
+    }
+}
+
+fetch(`https://the-bagel.herokuapp.com/?data=messages&sessionKey=${sessionKey}`)
     .then(response => response.json())
     .then(data => {
+        arrayData = [];
 
-        var name = "sessionKey=";
-        var decodedCookie = decodeURIComponent(document.cookie);
+        console.log(data);
+            
+        for(var i in data)
+            arrayData.unshift(i);
 
-        var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') {
-              c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-              sessionKey = c.substring(name.length, c.length);
-            }
-        }
+        console.log(arrayData);
 
-        fetch(`https://the-bagel.herokuapp.com/?request=sessionVerify&sessionKey=${sessionKey}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.response === `${sessionKey}`) {
-                    arrayData = [];
-
-                    console.log(data);
-            
-                    for(var i in data)
-                        arrayData.unshift(i);
-            
-                    console.log(arrayData);
-            
-                    arrayData.forEach(function (arrayItem) {
-                        let bodyElement = document.body;
-            
-                        let messageCardElement = document.createElement('div');
-                        let messageCard = document.createElement('canvas');
-                        let messageContentContainer = document.createElement('div');
-                        let messageAuthorContainer = document.createElement('div');
-                    
-                        let messageContentElement = document.createElement('p');
-                        let messageAuthorElement = document.createElement('h3');
-                    
-                        messageCard.className = "message-card-canv";
-                        messageCardElement.className = "message-card";
-                        messageContentContainer.className = "message-content-container";
-                        messageAuthorContainer.className = "message-author-container";
-                    
-                        messageContentElement.className = "message-content-element";
-                        messageAuthorElement.className = "message-author-element";
-            
-                        messageCardElement.id = `message-card-${arrayItem}`;
-            
-                        messageCardElement.style.top = step + 'px';
-            
-                        messageContentElement.innerText = data[arrayItem].message;
-                        messageAuthorElement.innerText = data[arrayItem].author;
-                        bodyElement.appendChild(messageCardElement);
-                        messageCardElement.append(messageCard, messageContentContainer, messageAuthorContainer);
-            
-                        messageAuthorContainer.appendChild(messageAuthorElement);
-                        messageContentContainer.appendChild(messageContentElement);
-                        step += 200;
-            
-                        loaded += 1;
-                    });
-                } else {
-                    return;
-                }
-            });
-/*
-        for (var i in arrayData) {
-
+        arrayData.forEach(function (arrayItem) {
             let bodyElement = document.body;
 
             let messageCardElement = document.createElement('div');
@@ -92,12 +95,12 @@ fetch(`https://the-bagel.herokuapp.com/?data=messages`)
             messageContentElement.className = "message-content-element";
             messageAuthorElement.className = "message-author-element";
 
-            messageCardElement.id = "message-card";
+            messageCardElement.id = `message-card-${arrayItem}`;
 
             messageCardElement.style.top = step + 'px';
 
-            messageContentElement.innerText = data[i].message;
-            messageAuthorElement.innerText = data[i].author;
+            messageContentElement.innerText = data[arrayItem].message;
+            messageAuthorElement.innerText = data[arrayItem].author;
             bodyElement.appendChild(messageCardElement);
             messageCardElement.append(messageCard, messageContentContainer, messageAuthorContainer);
 
@@ -106,43 +109,7 @@ fetch(`https://the-bagel.herokuapp.com/?data=messages`)
             step += 200;
 
             loaded += 1;
-        }
-        for (var i in data) {
-
-            let bodyElement = document.body;
-
-            let messageCardElement = document.createElement('div');
-            let messageCard = document.createElement('canvas');
-            let messageContentContainer = document.createElement('div');
-            let messageAuthorContainer = document.createElement('div');
-        
-            let messageContentElement = document.createElement('p');
-            let messageAuthorElement = document.createElement('h3');
-        
-            messageCard.className = "message-card-canv";
-            messageCardElement.className = "message-card";
-            messageContentContainer.className = "message-content-container";
-            messageAuthorContainer.className = "message-author-container";
-        
-            messageContentElement.className = "message-content-element";
-            messageAuthorElement.className = "message-author-element";
-
-            messageCardElement.id = "message-card";
-
-            messageCardElement.style.top = step + 'px';
-
-            messageContentElement.innerText = data[i].message;
-            messageAuthorElement.innerText = data[i].author;
-            bodyElement.appendChild(messageCardElement);
-            messageCardElement.append(messageCard, messageContentContainer, messageAuthorContainer);
-
-            messageAuthorContainer.appendChild(messageAuthorElement);
-            messageContentContainer.appendChild(messageContentElement);
-            step += 200;
-
-            loaded += 1;
-        }
-        */
+        });
     });
 
 
