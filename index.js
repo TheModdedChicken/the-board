@@ -66,8 +66,8 @@ for(var i = 0; i <ca.length; i++) {
                 loaded += 1;
             });
         })
-        .then(function() {
-            if (response.status === 404) {
+        .then(status => {
+            if (status === 404) {
                 var sendButton = document.getElementById('sendButton');
                 var loginButton = document.getElementById('loginButton');
                 var textBoxId = document.getElementById('messageBox');
@@ -78,7 +78,7 @@ for(var i = 0; i <ca.length; i++) {
     
                 sendButton.style.visibility = 'hidden';
                 loginButton.style.visibility = 'visible';
-            } else if (response.status === 200) {
+            } else if (status === 200) {
                 var sendButton = document.getElementById('sendButton');
                 var loginButton = document.getElementById('loginButton');
                 var textBox = document.getElementById('messageBox');
