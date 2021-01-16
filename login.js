@@ -2,7 +2,7 @@ function login() {
     var Lusername = document.getElementById('login-username').value;
     var Llpassword = document.getElementById('login-password').value;
 
-    fetch(`http://the-bagel.herokuapp.com/?request=login&username=${Lusername}&password=${Llpassword}`)
+    fetch(``)
         .then(response => response.json())
         .then(data => {
             var exdays = 7;
