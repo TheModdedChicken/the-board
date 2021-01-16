@@ -16,7 +16,7 @@ for(var i = 0; i <ca.length; i++) {
     if (c.indexOf(name) == 0) {
       var sessionKey = c.substring(name.length, c.length);
 
-      if (sessionKey === '') sessionKey = 'none';
+      if (theSessionKey === "") sessionKey = 'none';
 
       fetch(`https://the-bagel.herokuapp.com/?data=messages&sessionKey=${sessionKey}`)
         .then(response => response.json())
@@ -57,12 +57,6 @@ for(var i = 0; i <ca.length; i++) {
                 messageAuthorElement.innerText = data[arrayItem].author;
 
                 if (data[arrayItem].message === 'Please login to view messages...' && data[arrayItem].author === 'System') {
-                    var sendButton = document.getElementById('sendButton');
-                    var loginButton = document.getElementById('loginButton');
-
-                    sendButton.style.visibility = 'hidden';
-                    loginButton.style.visibility = 'visible';
-                } else if (theSessionKey === '') {
                     var sendButton = document.getElementById('sendButton');
                     var loginButton = document.getElementById('loginButton');
 
