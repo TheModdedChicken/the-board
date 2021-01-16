@@ -38,14 +38,6 @@ for(var i = 0; i <ca.length; i++) {
             
                 let messageContentElement = document.createElement('p');
                 let messageAuthorElement = document.createElement('h3');
-
-                if (data[arrayItem].message === 'Please login to view messages...' && data[arrayItem].author === 'System') {
-                    var sendButton = document.getElementById('sendButton');
-                    var loginButton = document.getElementById('loginButton');
-
-                    sendButton.style.visibility = 'hidden';
-                    loginButton.style.visibility = 'visible';
-                }
             
                 messageCard.className = "message-card-canv";
                 messageCardElement.className = "message-card";
@@ -61,6 +53,15 @@ for(var i = 0; i <ca.length; i++) {
     
                 messageContentElement.innerText = data[arrayItem].message;
                 messageAuthorElement.innerText = data[arrayItem].author;
+
+                if (data[arrayItem].message === 'Please login to view messages...' && data[arrayItem].author === 'System') {
+                    var sendButton = document.getElementById('sendButton');
+                    var loginButton = document.getElementById('loginButton');
+
+                    sendButton.style.visibility = 'hidden';
+                    loginButton.style.visibility = 'visible';
+                }
+
                 bodyElement.appendChild(messageCardElement);
                 messageCardElement.append(messageCard, messageContentContainer, messageAuthorContainer);
     
