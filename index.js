@@ -62,7 +62,7 @@ for(var i = 0; i <ca.length; i++) {
 
                     sendButton.style.visibility = 'hidden';
                     loginButton.style.visibility = 'visible';
-                } else if (theSessionKey = '') {
+                } else if (theSessionKey === '') {
                     var sendButton = document.getElementById('sendButton');
                     var loginButton = document.getElementById('loginButton');
 
