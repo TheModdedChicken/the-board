@@ -77,12 +77,11 @@ for(var i = 0; i <ca.length; i++) {
 
 
 function send() {
-    var author = document.getElementById('authorBox');
     var message = document.getElementById('messageBox');
     var messageBox = document.getElementById('warningBox');
     var messageText = document.getElementById('warningText');
 
-    if (author.value === '' || message.value === '') {
+    if (message.value === '') {
         messageBox.style.visibility = 'visible';
         messageText.style.visibility = 'visible';
 
@@ -95,24 +94,58 @@ function send() {
         }, 5000);
         return;
     } else {
+
+        var name = "sessionKey=";
+        var decodedCookie = decodeURIComponent(document.cookie);
         
-        fetch(`https://the-bagel.herokuapp.com/?author=${author.value}&text=${message.value}`);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              var sessionKey = c.substring(name.length, c.length);
 
-        messageBox.style.visibility = 'visible';
-        messageText.style.visibility = 'visible';
-
-        message.value = null;
-
-        messageBox.style.color = '#29df418e';
-        messageText.textContent = 'Message sent successfully!';
-
-        setTimeout(function () {
-            messageBox.style.visibility = 'hidden';
-            messageText.style.visibility = 'hidden';
-
-            receive();
-        }, 1500);
-        return;
+              fetch(`https://the-bagel.herokuapp.com/?sessionKey=${sessionKey}&text=${message.value}`)
+              .then(response => response.json())
+              .then(data => {
+                  if (data.response === '200') {
+                    messageBox.style.visibility = 'visible';
+                    messageText.style.visibility = 'visible';
+            
+                    message.value = null;
+            
+                    messageBox.style.color = '#29df418e';
+                    messageText.textContent = 'Message sent successfully!';
+            
+                    setTimeout(function () {
+                      messageBox.style.visibility = 'hidden';
+                      messageText.style.visibility = 'hidden';
+            
+                      receive();
+                    }, 1500);
+                    return;
+                  } else {
+                    messageBox.style.visibility = 'visible';
+                    messageText.style.visibility = 'visible';
+            
+                    message.value = null;
+            
+                    messageBox.style.color = '#29df418e';
+                    messageText.textContent = 'Message failed to send.';
+            
+                    setTimeout(function () {
+                      messageBox.style.visibility = 'hidden';
+                      messageText.style.visibility = 'hidden';
+            
+                      receive();
+                    }, 1500);
+                    return;
+                  }
+              });
+            }
+        }
     }
 }
 
