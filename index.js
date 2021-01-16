@@ -6,13 +6,6 @@ fetch(`https://the-bagel.herokuapp.com/?data=messages`)
     .then(response => response.json())
     .then(data => {
 
-        var sessionKeyC = getCookie("sessionKey");
-
-        if (sessionKeyC === '') {
-            console.log('Nope');
-            return;
-        }
-
         var name = "sessionKey=";
         var decodedCookie = decodeURIComponent(document.cookie);
 
