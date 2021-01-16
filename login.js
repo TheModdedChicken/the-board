@@ -10,5 +10,9 @@ function login() {
             var expireTime = time + 1000*36000;
             now.setTime(expireTime);
             document.cookie = `sessionKey=${data.sessionKey};expires=`+now.toUTCString()+`;path=/`;
+
+            setTimeout(function () {
+                location.href = 'https://themoddedchicken.thedev.id/the-board/';
+            }, 1000);
         });
 }
