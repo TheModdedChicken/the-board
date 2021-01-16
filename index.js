@@ -5,6 +5,8 @@ var loaded = 0;
 var name = "sessionKey=";
 var decodedCookie = decodeURIComponent(document.cookie);
 
+arrayData = [];
+
 var ca = decodedCookie.split(';');
 for(var i = 0; i <ca.length; i++) {
     var c = ca[i];
@@ -19,8 +21,6 @@ for(var i = 0; i <ca.length; i++) {
       fetch(`https://the-bagel.herokuapp.com/?data=messages&sessionKey=${sessionKey}`)
         .then(response => response.json())
         .then(data => {
-            arrayData = [];
-  
             console.log(data);
                 
             for(var i in data)
@@ -136,8 +136,6 @@ function receive() {
           fetch(`https://the-bagel.herokuapp.com/?data=messages&sessionKey=${sessionKey}`)
             .then(response => response.json())
             .then(data => {
-                arrayData = [];
-      
                 console.log(data);
                     
                 for(var i in data)
