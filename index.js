@@ -119,8 +119,12 @@ function send() {
 function receive() {
     var step = 350;
 
-    var loaded = 0;
-    
+    arrayData.forEach(function (arrayItem) {
+        var cardElement = document.getElementById(`message-card-${arrayItem}`)
+
+        cardElement.remove();
+    });
+
     var name = "sessionKey=";
     var decodedCookie = decodeURIComponent(document.cookie);
     
@@ -187,8 +191,7 @@ function receive() {
                     messageAuthorContainer.appendChild(messageAuthorElement);
                     messageContentContainer.appendChild(messageContentElement);
                     step += 200;
-        
-                    loaded += 1;
+    
                 });
             });
         }
