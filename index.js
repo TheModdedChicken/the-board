@@ -2,6 +2,8 @@ var step = 350;
 
 var loaded = 0;
 
+var theSessionKey = getCookie("sessionKey");
+
 var name = "sessionKey=";
 var decodedCookie = decodeURIComponent(document.cookie);
 
@@ -55,6 +57,12 @@ for(var i = 0; i <ca.length; i++) {
                 messageAuthorElement.innerText = data[arrayItem].author;
 
                 if (data[arrayItem].message === 'Please login to view messages...' && data[arrayItem].author === 'System') {
+                    var sendButton = document.getElementById('sendButton');
+                    var loginButton = document.getElementById('loginButton');
+
+                    sendButton.style.visibility = 'hidden';
+                    loginButton.style.visibility = 'visible';
+                } else if (theSessionKey = '') {
                     var sendButton = document.getElementById('sendButton');
                     var loginButton = document.getElementById('loginButton');
 
@@ -231,4 +239,19 @@ function receive() {
             });
         }
     }
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
 }
