@@ -117,61 +117,80 @@ function send() {
 }
 
 function receive() {
-    step = 350;
+    var step = 350;
 
-    arrayData.forEach(function (arrayItem) {
-        var cardElement = document.getElementById(`message-card-${arrayItem}`)
-
-        cardElement.remove();
-    });
-
-    fetch(`https://the-bagel.herokuapp.com/?data=messages`)
-    .then(response => response.json())
-    .then(data => {
-        var arrayData = [];
-
-        console.log(data);
-
-        for(var i in data)
-            arrayData.unshift(i);
-
-        console.log(arrayData);
-
-        arrayData.forEach(function (arrayItem) {
-            let bodyElement = document.body;
-
-            let messageCardElement = document.createElement('div');
-            let messageCard = document.createElement('canvas');
-            let messageContentContainer = document.createElement('div');
-            let messageAuthorContainer = document.createElement('div');
+    var loaded = 0;
+    
+    var name = "sessionKey=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          var sessionKey = c.substring(name.length, c.length);
+    
+          if (sessionKey === '') sessionKey = 'none';
+    
+          fetch(`https://the-bagel.herokuapp.com/?data=messages&sessionKey=${sessionKey}`)
+            .then(response => response.json())
+            .then(data => {
+                arrayData = [];
+      
+                console.log(data);
+                    
+                for(var i in data)
+                    arrayData.unshift(i);
         
-            let messageContentElement = document.createElement('p');
-            let messageAuthorElement = document.createElement('h3');
+                console.log(arrayData);
         
-            messageCard.className = "message-card-canv";
-            messageCardElement.className = "message-card";
-            messageContentContainer.className = "message-content-container";
-            messageAuthorContainer.className = "message-author-container";
+                arrayData.forEach(function (arrayItem) {
+                    let bodyElement = document.body;
         
-            messageContentElement.className = "message-content-element";
-            messageAuthorElement.className = "message-author-element";
-
-            messageCardElement.id = `message-card-${arrayItem}`;
-
-            messageCardElement.style.top = step + 'px';
-
-            messageContentElement.innerText = data[arrayItem].message;
-            messageAuthorElement.innerText = data[arrayItem].author;
-            bodyElement.appendChild(messageCardElement);
-            messageCardElement.append(messageCard, messageContentContainer, messageAuthorContainer);
-
-            messageAuthorContainer.appendChild(messageAuthorElement);
-            messageContentContainer.appendChild(messageContentElement);
-            step += 200;
-
-            loaded += 1;
-        });
-
-        return arrayData;
-    });
+                    let messageCardElement = document.createElement('div');
+                    let messageCard = document.createElement('canvas');
+                    let messageContentContainer = document.createElement('div');
+                    let messageAuthorContainer = document.createElement('div');
+                
+                    let messageContentElement = document.createElement('p');
+                    let messageAuthorElement = document.createElement('h3');
+                
+                    messageCard.className = "message-card-canv";
+                    messageCardElement.className = "message-card";
+                    messageContentContainer.className = "message-content-container";
+                    messageAuthorContainer.className = "message-author-container";
+                
+                    messageContentElement.className = "message-content-element";
+                    messageAuthorElement.className = "message-author-element";
+        
+                    messageCardElement.id = `message-card-${arrayItem}`;
+        
+                    messageCardElement.style.top = step + 'px';
+        
+                    messageContentElement.innerText = data[arrayItem].message;
+                    messageAuthorElement.innerText = data[arrayItem].author;
+    
+                    if (data[arrayItem].message === 'Please login to view messages...' && data[arrayItem].author === 'System') {
+                        var sendButton = document.getElementById('sendButton');
+                        var loginButton = document.getElementById('loginButton');
+    
+                        sendButton.style.visibility = 'hidden';
+                        loginButton.style.visibility = 'visible';
+                    }
+    
+                    bodyElement.appendChild(messageCardElement);
+                    messageCardElement.append(messageCard, messageContentContainer, messageAuthorContainer);
+        
+                    messageAuthorContainer.appendChild(messageAuthorElement);
+                    messageContentContainer.appendChild(messageContentElement);
+                    step += 200;
+        
+                    loaded += 1;
+                });
+            });
+        }
+    }
 }
