@@ -14,6 +14,8 @@ for(var i = 0; i <ca.length; i++) {
     if (c.indexOf(name) == 0) {
       var sessionKey = c.substring(name.length, c.length);
 
+      if (sessionKey === undefined) sessionKey = 'none';
+
       fetch(`https://the-bagel.herokuapp.com/?data=messages&sessionKey=${sessionKey}`)
         .then(response => response.json())
         .then(data => {
