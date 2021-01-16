@@ -150,49 +150,51 @@ function receive() {
             
                     cardElement.remove();
                 });
+
+                setTimeout(function () {
+                    arrayData.forEach(function (arrayItem) {
+                        let bodyElement = document.body;
+            
+                        let messageCardElement = document.createElement('div');
+                        let messageCard = document.createElement('canvas');
+                        let messageContentContainer = document.createElement('div');
+                        let messageAuthorContainer = document.createElement('div');
+                    
+                        let messageContentElement = document.createElement('p');
+                        let messageAuthorElement = document.createElement('h3');
+                    
+                        messageCard.className = "message-card-canv";
+                        messageCardElement.className = "message-card";
+                        messageContentContainer.className = "message-content-container";
+                        messageAuthorContainer.className = "message-author-container";
+                    
+                        messageContentElement.className = "message-content-element";
+                        messageAuthorElement.className = "message-author-element";
+            
+                        messageCardElement.id = `message-card-${arrayItem}`;
+            
+                        messageCardElement.style.top = step + 'px';
+            
+                        messageContentElement.innerText = data[arrayItem].message;
+                        messageAuthorElement.innerText = data[arrayItem].author;
         
-                arrayData.forEach(function (arrayItem) {
-                    let bodyElement = document.body;
+                        if (data[arrayItem].message === 'Please login to view messages...' && data[arrayItem].author === 'System') {
+                            var sendButton = document.getElementById('sendButton');
+                            var loginButton = document.getElementById('loginButton');
         
-                    let messageCardElement = document.createElement('div');
-                    let messageCard = document.createElement('canvas');
-                    let messageContentContainer = document.createElement('div');
-                    let messageAuthorContainer = document.createElement('div');
-                
-                    let messageContentElement = document.createElement('p');
-                    let messageAuthorElement = document.createElement('h3');
-                
-                    messageCard.className = "message-card-canv";
-                    messageCardElement.className = "message-card";
-                    messageContentContainer.className = "message-content-container";
-                    messageAuthorContainer.className = "message-author-container";
-                
-                    messageContentElement.className = "message-content-element";
-                    messageAuthorElement.className = "message-author-element";
+                            sendButton.style.visibility = 'hidden';
+                            loginButton.style.visibility = 'visible';
+                        }
         
-                    messageCardElement.id = `message-card-${arrayItem}`;
+                        bodyElement.appendChild(messageCardElement);
+                        messageCardElement.append(messageCard, messageContentContainer, messageAuthorContainer);
+            
+                        messageAuthorContainer.appendChild(messageAuthorElement);
+                        messageContentContainer.appendChild(messageContentElement);
+                        step += 200;
         
-                    messageCardElement.style.top = step + 'px';
-        
-                    messageContentElement.innerText = data[arrayItem].message;
-                    messageAuthorElement.innerText = data[arrayItem].author;
-    
-                    if (data[arrayItem].message === 'Please login to view messages...' && data[arrayItem].author === 'System') {
-                        var sendButton = document.getElementById('sendButton');
-                        var loginButton = document.getElementById('loginButton');
-    
-                        sendButton.style.visibility = 'hidden';
-                        loginButton.style.visibility = 'visible';
-                    }
-    
-                    bodyElement.appendChild(messageCardElement);
-                    messageCardElement.append(messageCard, messageContentContainer, messageAuthorContainer);
-        
-                    messageAuthorContainer.appendChild(messageAuthorElement);
-                    messageContentContainer.appendChild(messageContentElement);
-                    step += 200;
-    
-                });
+                    });
+                }, 250)
             });
         }
     }
