@@ -123,6 +123,13 @@ function receive() {
         cardElement.remove();
     });
 
+    step = 350;
+    
+    name = "sessionKey=";
+    decodedCookie = decodeURIComponent(document.cookie);
+    
+    ca = decodedCookie.split(';');
+
     for(var i = 0; i <ca.length; i++) {
         var c = ca[i];
         while (c.charAt(0) == ' ') {
