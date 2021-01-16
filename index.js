@@ -24,7 +24,7 @@ for(var i = 0; i <ca.length; i++) {
             console.log(data);
                 
             for(var i in data)
-                arrayData.unshift(i);
+                return arrayData.unshift(i);
     
             console.log(arrayData);
     
