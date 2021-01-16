@@ -87,8 +87,8 @@ for(var i = 0; i <ca.length; i++) {
                 var textBoxId = document.getElementById('messageBox');
                 var textBox = document.getElementsByName('messageBox')[0];
 
-                textBox.placeholder = 'Message Pog?'
-                textBoxId.style.cursor = 'pointer'
+                textBox.placeholder = 'Message Pog?';
+                textBoxId.style.cursor = 'pointer';
     
                 sendButton.style.visibility = 'visible';
                 loginButton.style.visibility = 'hidden';
