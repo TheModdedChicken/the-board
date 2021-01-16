@@ -39,7 +39,7 @@ for(var i = 0; i <ca.length; i++) {
                 let messageContentElement = document.createElement('p');
                 let messageAuthorElement = document.createElement('h3');
 
-                if (data[0].message === 'Please login to view messages...' && data[0].author === 'System') {
+                if (data[arrayItem].message === 'Please login to view messages...' && data[arrayItem].author === 'System') {
                     var sendButton = document.getElementById('sendButton');
                     var loginButton = document.getElementById('loginButton');
 
