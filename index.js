@@ -20,12 +20,7 @@ for(var i = 0; i <ca.length; i++) {
 
       fetch(`https://the-bagel.herokuapp.com/?data=messages&sessionKey=${sessionKey}`)
         .then(response => {
-            var state = response.json()
-
-            console.log(state);
-            console.log(state.status);
-
-            if (state.status === 404) {
+            if (response.status === 404) {
                 var sendButton = document.getElementById('sendButton');
                 var loginButton = document.getElementById('loginButton');
                 var textBoxId = document.getElementById('messageBox');
@@ -36,7 +31,7 @@ for(var i = 0; i <ca.length; i++) {
     
                 sendButton.style.visibility = 'hidden';
                 loginButton.style.visibility = 'visible';
-            } else if (state.status === 200) {
+            } else if (response.status === 200) {
                 var sendButton = document.getElementById('sendButton');
                 var loginButton = document.getElementById('loginButton');
                 var textBox = document.getElementById('messageBox');
@@ -50,6 +45,8 @@ for(var i = 0; i <ca.length; i++) {
                 loginButton.style.visibility = 'hidden';
 
             }
+
+            response.json()
         })
         .then(data => {
             arrayData = [];
