@@ -126,7 +126,6 @@ body::-webkit-scrollbar-thumb {
     font-family: 'Inter';
     color: #000;
     margin: 4px 2px;
-    cursor: pointer;
     border-radius: 14px;
     position: absolute;
     left: 800px;
@@ -135,6 +134,7 @@ body::-webkit-scrollbar-thumb {
     outline: none;
     width: 300px;
     height: 150px;
+    cursor:not-allowed;
 }
 
 .authorBox {

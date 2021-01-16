@@ -56,14 +56,6 @@ for(var i = 0; i <ca.length; i++) {
                 messageContentElement.innerText = data[arrayItem].message;
                 messageAuthorElement.innerText = data[arrayItem].author;
 
-                if (data[arrayItem].message === 'Please login to view messages...' && data[arrayItem].author === 'System') {
-                    var sendButton = document.getElementById('sendButton');
-                    var loginButton = document.getElementById('loginButton');
-
-                    sendButton.style.visibility = 'hidden';
-                    loginButton.style.visibility = 'visible';
-                }
-
                 bodyElement.appendChild(messageCardElement);
                 messageCardElement.append(messageCard, messageContentContainer, messageAuthorContainer);
     
@@ -80,15 +72,27 @@ for(var i = 0; i <ca.length; i++) {
             if (theResponse === 404) {
                 var sendButton = document.getElementById('sendButton');
                 var loginButton = document.getElementById('loginButton');
+                var textBoxId = document.getElementById('messageBox');
+                var textBox = document.getElementsByName('messageBox')[0];
+
+                textBox.placeholder = 'Please login to send and view messages...'
+                textBoxId.style.cursor = 'not-allowed'
     
                 sendButton.style.visibility = 'hidden';
                 loginButton.style.visibility = 'visible';
             } else if (theResponse === 200) {
                 var sendButton = document.getElementById('sendButton');
                 var loginButton = document.getElementById('loginButton');
+                var textBox = document.getElementById('messageBox');
+                var textBoxId = document.getElementById('messageBox');
+                var textBox = document.getElementsByName('messageBox')[0];
+
+                textBox.placeholder = 'Please login to send and view messages...'
+                textBoxId.style.cursor = 'pointer'
     
                 sendButton.style.visibility = 'visible';
                 loginButton.style.visibility = 'hidden';
+
             }
         });
     }
