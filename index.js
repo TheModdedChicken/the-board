@@ -123,6 +123,13 @@ function receive() {
     var decodedCookie = decodeURIComponent(document.cookie);
     
     var ca = decodedCookie.split(';');
+
+    arrayData.forEach(function (arrayItem) {
+        var cardElement = document.getElementById(`message-card-${arrayItem}`)
+
+        cardElement.remove();
+    });
+
     for(var i = 0; i <ca.length; i++) {
         var c = ca[i];
         while (c.charAt(0) == ' ') {
@@ -142,12 +149,6 @@ function receive() {
                     arrayData.unshift(i);
         
                 console.log(arrayData);
-
-                arrayData.forEach(function (arrayItem) {
-                    var cardElement = document.getElementById(`message-card-${arrayItem}`)
-            
-                    cardElement.remove();
-                });
 
                 setTimeout(function () {
                     arrayData.forEach(function (arrayItem) {
