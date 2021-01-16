@@ -184,6 +184,31 @@ body::-webkit-scrollbar-thumb {
     background: #3990d6;
 }
 
+.loginButton {
+    background-color:#42a4f5;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #000;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 24px;
+    position: absolute;
+    left: 1030px;
+    top: 270px;
+    outline: none;
+    visibility: hidden;
+}
+
+.loginButton:hover {
+    background: #3990d6;
+}
+
 .message-card {
     position: absolute;
     left: 800px;
