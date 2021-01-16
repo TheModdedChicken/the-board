@@ -19,35 +19,7 @@ for(var i = 0; i <ca.length; i++) {
       if (theSessionKey === "") sessionKey = 'none';
 
       fetch(`https://the-bagel.herokuapp.com/?data=messages&sessionKey=${sessionKey}`)
-        .then(response => {
-            if (response.status === 404) {
-                var sendButton = document.getElementById('sendButton');
-                var loginButton = document.getElementById('loginButton');
-                var textBoxId = document.getElementById('messageBox');
-                var textBox = document.getElementsByName('messageBox')[0];
-
-                textBox.placeholder = 'Please login to send and view messages...'
-                textBoxId.style.cursor = 'not-allowed'
-    
-                sendButton.style.visibility = 'hidden';
-                loginButton.style.visibility = 'visible';
-            } else if (response.status === 200) {
-                var sendButton = document.getElementById('sendButton');
-                var loginButton = document.getElementById('loginButton');
-                var textBox = document.getElementById('messageBox');
-                var textBoxId = document.getElementById('messageBox');
-                var textBox = document.getElementsByName('messageBox')[0];
-
-                textBox.placeholder = 'Message Pog?';
-                textBoxId.style.cursor = 'pointer';
-    
-                sendButton.style.visibility = 'visible';
-                loginButton.style.visibility = 'hidden';
-
-            }
-
-            response.json()
-        })
+        .then(response => response.json())
         .then(data => {
             arrayData = [];
   
@@ -93,6 +65,33 @@ for(var i = 0; i <ca.length; i++) {
     
                 loaded += 1;
             });
+        })
+        .then(function() {
+            if (response.status === 404) {
+                var sendButton = document.getElementById('sendButton');
+                var loginButton = document.getElementById('loginButton');
+                var textBoxId = document.getElementById('messageBox');
+                var textBox = document.getElementsByName('messageBox')[0];
+
+                textBox.placeholder = 'Please login to send and view messages...'
+                textBoxId.style.cursor = 'not-allowed'
+    
+                sendButton.style.visibility = 'hidden';
+                loginButton.style.visibility = 'visible';
+            } else if (response.status === 200) {
+                var sendButton = document.getElementById('sendButton');
+                var loginButton = document.getElementById('loginButton');
+                var textBox = document.getElementById('messageBox');
+                var textBoxId = document.getElementById('messageBox');
+                var textBox = document.getElementsByName('messageBox')[0];
+
+                textBox.placeholder = 'Message Pog?';
+                textBoxId.style.cursor = 'pointer';
+    
+                sendButton.style.visibility = 'visible';
+                loginButton.style.visibility = 'hidden';
+
+            }
         });
     }
 }
