@@ -73,6 +73,23 @@ for(var i = 0; i <ca.length; i++) {
     
                 loaded += 1;
             });
+        })
+        .then(function(){
+            var theResponse = Response.status
+
+            if (theResponse === 404) {
+                var sendButton = document.getElementById('sendButton');
+                var loginButton = document.getElementById('loginButton');
+    
+                sendButton.style.visibility = 'hidden';
+                loginButton.style.visibility = 'visible';
+            } else if (theResponse === 200) {
+                var sendButton = document.getElementById('sendButton');
+                var loginButton = document.getElementById('loginButton');
+    
+                sendButton.style.visibility = 'visible';
+                loginButton.style.visibility = 'hidden';
+            }
         });
     }
 }

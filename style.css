@@ -178,6 +178,7 @@ body::-webkit-scrollbar-thumb {
     left: 1030px;
     top: 270px;
     outline: none;
+    visibility: hidden;
 }
 
 .sendButton:hover {
@@ -202,7 +203,6 @@ body::-webkit-scrollbar-thumb {
     left: 1030px;
     top: 270px;
     outline: none;
-    visibility: hidden;
 }
 
 .loginButton:hover {
