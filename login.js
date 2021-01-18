@@ -7,7 +7,7 @@ function login() {
         .then(data => {
             var now = new Date();
             var time = now.getTime();
-            var expireTime = time + 1000*36000;
+            var expireTime = time + 1000*1036800;
             now.setTime(expireTime);
             document.cookie = `sessionKey=${data.sessionKey};expires=`+now.toUTCString()+`;path=/`;
 
