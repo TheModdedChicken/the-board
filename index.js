@@ -158,7 +158,7 @@ function send() {
             if (c.indexOf(name) == 0) {
               var sessionKey = c.substring(name.length, c.length);
 
-              fetch(`https://the-bagel.herokuapp.com/?sessionKey=${sessionKey}&text=${message.value}`)
+              fetch(`https://the-bagel.herokuapp.com/?request=messageSend&text=${message.value}&sessionKey=${sessionKey}`)
               .then(response => response.json())
               .then(data => {
                   if (data.response === '200') {
