@@ -129,8 +129,7 @@ h2, p {
 
 .login-username {
     background-color: #e7f1fa;
-    border: thick 100px #111111;
-    color: white;
+    border: none;
     padding: 14px 10px;
     text-align: center;
     text-decoration: none;
@@ -146,12 +145,12 @@ h2, p {
     top: 300px;
     resize: none;
     outline: none;
+    width: 198px;
 }
 
 .login-password {
     background-color: #e7f1fa;
-    border: thick 100px #111111;
-    color: white;
+    border: none;
     padding: 14px 10px;
     text-align: center;
     text-decoration: none;
@@ -167,6 +166,7 @@ h2, p {
     top: 410px;
     resize: none;
     outline: none;
+    width: 198px;
 }
 
 .signin-button {
