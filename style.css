@@ -182,7 +182,7 @@ body::-webkit-scrollbar-thumb {
     cursor: pointer;
     border-radius: 14px;
     position: absolute;
-    left: 800px;
+    left: 750px;
     top: 265px;
     resize: none;
     outline: none;
@@ -242,8 +242,8 @@ body::-webkit-scrollbar-thumb {
 
 .message-card {
     position: absolute;
-    left: 800px;
-    width: 325px;
+    left: 750px;
+    width: 375px;
     height: 178px;
     background: #2e2e2e;
     border-radius: 14px;
