@@ -93,6 +93,7 @@ for(var i = 0; i <ca.length; i++) {
         });
     }
 }
+
 let bodyElement = document.body;
     
 let messageCardElement = document.createElement('div');
@@ -207,7 +208,7 @@ function receive() {
         cardElement.remove();
     });
 
-    step = 350;
+    step = 145;
     
     name = "sessionKey=";
     decodedCookie = decodeURIComponent(document.cookie);
