@@ -1,4 +1,4 @@
-var step = 350;
+var step = 70;
 
 var loaded = 0;
 
