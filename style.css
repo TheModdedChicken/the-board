@@ -157,11 +157,11 @@ body::-webkit-scrollbar-thumb {
     margin: 4px 2px;
     border-radius: 14px;
     position: absolute;
-    left: 800px;
+    left: 750px;
     top: 70px;
     resize: none;
     outline: none;
-    width: 300px;
+    width: 350px;
     height: 150px;
     cursor:not-allowed;
     overflow-y: hidden;
