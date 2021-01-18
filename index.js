@@ -31,6 +31,7 @@ for(var i = 0; i <ca.length; i++) {
             console.log(arrayData);
     
             arrayData.forEach(function (arrayItem) {
+              if (!data[arrayItem].message === undefined && !data[arrayItem].author === undefined) {
                 let bodyElement = document.body;
     
                 let messageCardElement = document.createElement('div');
@@ -64,6 +65,8 @@ for(var i = 0; i <ca.length; i++) {
                 step += 200;
     
                 loaded += 1;
+              }
+              return;
             });
 
             if (loaded >= 2) {
