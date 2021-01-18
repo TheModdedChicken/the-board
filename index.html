@@ -14,13 +14,17 @@
     </head>
 
     <body>
-        <script defer src="./index.js"></script>
+        <script defer src="./dev.js"></script>
         <div class="main" id="main">
             <canvas class="warningBox" id="warningBox"></canvas>
                 <h3 class="warningText" id="warningText"></h3>
             <textarea name="messageBox" class="messageBox" id="messageBox" maxlength="200" placeholder="Please login to send and view messages..." rows="7"></textarea>
-            <button class="sendButton" id="sendButton" onclick="send();">Send</button>
-            <button class="loginButton" id="loginButton" onclick="location.href = location + 'login';">Login</button>
+
+            <div class="message-box-spacer">
+                <button class="loginButton" id="loginButton" onclick="location.href = location + 'login';">Login</button>
+                <button class="sendButton" id="sendButton" onclick="send();">Send</button>
+            </div>
+
             <button class="back-button" onclick="location.href = 'https://themoddedchicken.thedev.id/';"><</button>
 
             <canvas class="settingsBox" id="settingsBox"></canvas>

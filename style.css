@@ -159,14 +159,22 @@ body::-webkit-scrollbar-thumb {
     margin: 4px 2px;
     border-radius: 14px;
     position: absolute;
-    left: 57%;
+    left: 56.8%;
     top: 140px;
     resize: none;
     outline: none;
-    width: 350px;
+    width: 355px;
     height: 150px;
     cursor:not-allowed;
     overflow-y: hidden;
+}
+
+.message-box-spacer {
+    position: absolute;
+    top: 323px;
+    left: 57%;
+    width: 375px;
+    height: 97px;
 }
 
 .sendButton {
@@ -174,7 +182,7 @@ body::-webkit-scrollbar-thumb {
     border: none;
     color: white;
     padding: 10px 25px;
-    text-align: right;
+    text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
@@ -185,8 +193,8 @@ body::-webkit-scrollbar-thumb {
     cursor: pointer;
     border-radius: 24px;
     position: absolute;
-    left: 71.7%;
-    top: 340px;
+    left: 75.5%;
+    top: 20px;
     outline: none;
     visibility: hidden;
 }
@@ -211,8 +219,8 @@ body::-webkit-scrollbar-thumb {
     cursor: pointer;
     border-radius: 24px;
     position: absolute;
-    left: 71.7%;
-    top: 340px;
+    left: 74.9%;
+    top: 20px;
     outline: none;
 }
 
