@@ -1,4 +1,4 @@
-var step = 75;
+var step = 145;
 
 var loaded = 0;
 
@@ -93,6 +93,38 @@ for(var i = 0; i <ca.length; i++) {
         });
     }
 }
+let bodyElement = document.body;
+    
+let messageCardElement = document.createElement('div');
+let messageCard = document.createElement('canvas');
+let messageContentContainer = document.createElement('div');
+let messageAuthorContainer = document.createElement('div');
+
+let messageContentElement = document.createElement('p');
+let messageAuthorElement = document.createElement('h3');
+
+messageCard.className = "message-card-canv";
+messageCardElement.className = "message-card";
+messageContentContainer.className = "message-content-container";
+messageAuthorContainer.className = "message-author-container";
+
+messageContentElement.className = "message-content-element";
+messageAuthorElement.className = "message-author-element";
+
+messageCardElement.id = `message-card-sorry`;
+
+messageCardElement.style.top = '145px';
+
+messageCardElement.style.zIndex = -100;
+
+messageContentElement.innerText = 'Sorry bout that chief! Trying to find messages...';
+messageAuthorElement.innerText = 'System';
+
+bodyElement.appendChild(messageCardElement);
+messageCardElement.append(messageCard, messageContentContainer, messageAuthorContainer);
+
+messageAuthorContainer.appendChild(messageAuthorElement);
+messageContentContainer.appendChild(messageContentElement);
 
 
 function send() {

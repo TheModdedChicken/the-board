@@ -143,6 +143,8 @@ body::-webkit-scrollbar-thumb {
     transform: translateX(15px);
 }
 
+/* Control Panel Formating */
+
 .messageBox {
     background-color: #e7f1fa;
     border: thick 100px #111111;
@@ -157,37 +159,14 @@ body::-webkit-scrollbar-thumb {
     margin: 4px 2px;
     border-radius: 14px;
     position: absolute;
-    left: 750px;
-    top: 70px;
+    left: 57%;
+    top: 140px;
     resize: none;
     outline: none;
     width: 350px;
     height: 150px;
     cursor:not-allowed;
     overflow-y: hidden;
-}
-
-.authorBox {
-    background-color: #e7f1fa;
-    border: thick 100px #111111;
-    color: white;
-    padding: 14px 10px;
-    text-align: start;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-family: 'Inter';
-    color: #000;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 14px;
-    position: absolute;
-    left: 750px;
-    top: 265px;
-    resize: none;
-    outline: none;
-    width: 200px;
-    height: 20px;
 }
 
 .sendButton {
@@ -206,8 +185,8 @@ body::-webkit-scrollbar-thumb {
     cursor: pointer;
     border-radius: 24px;
     position: absolute;
-    left: 1030px;
-    top: 270px;
+    left: 71.7%;
+    top: 340px;
     outline: none;
     visibility: hidden;
 }
@@ -226,13 +205,14 @@ body::-webkit-scrollbar-thumb {
     display: inline-block;
     font-size: 16px;
     font-family: 'Inter';
+    font-weight: 500;
     color: #000;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 24px;
     position: absolute;
-    left: 1030px;
-    top: 270px;
+    left: 71.7%;
+    top: 340px;
     outline: none;
 }
 
@@ -240,9 +220,43 @@ body::-webkit-scrollbar-thumb {
     background: #3990d6;
 }
 
+.warningBox {
+    position: fixed;
+    left: 57%;
+    top: 10px;
+    width: 325px;
+    height: 50px;
+    background: #42a4f58e;
+    border-radius: 14px;
+    visibility: hidden;
+}
+
+.warningText {
+    position: fixed;
+    font-family: 'Inter';
+    font-weight: 500;
+    left: 57%;
+    top: 27px;
+    color: white;
+    visibility: hidden;
+}
+
+.settingsBox {
+    position: absolute;
+    left: 57%;
+    top: 420px;
+    width: 375px;
+    height: 378px;
+    background: #2e2e2e;
+    border-radius: 14px;
+    border-color: #222222;
+}
+
+/* Message Formating */
+
 .message-card {
     position: absolute;
-    left: 150px;
+    left: 25%;
     width: 375px;
     height: 178px;
     background: #2e2e2e;
@@ -279,25 +293,4 @@ body::-webkit-scrollbar-thumb {
     left: 10px;
     color: white;
     overflow-wrap: break-word;
-}
-
-.warningBox {
-    position: fixed;
-    left: 800px;
-    top: 10px;
-    width: 325px;
-    height: 50px;
-    background: #42a4f58e;
-    border-radius: 14px;
-    visibility: hidden;
-}
-
-.warningText {
-    position: fixed;
-    font-family: 'Inter';
-    font-weight: 500;
-    left: 855px;
-    top: 27px;
-    color: white;
-    visibility: hidden;
 }
