@@ -242,7 +242,7 @@ body::-webkit-scrollbar-thumb {
 
 .message-card {
     position: absolute;
-    left: 750px;
+    left: 150px;
     width: 375px;
     height: 178px;
     background: #2e2e2e;
