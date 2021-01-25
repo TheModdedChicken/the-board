@@ -300,10 +300,19 @@ function getCookie(cname) {
     return "";
 }
 
-function lightModeToggle(mode) {
-  if (mode == 'on') {
-    var body = document.getElementsByTagName('body')[0];
+function lightModeToggle() {
+  if (visualMode == 'on') {
+      body.style.background = 'gray';
 
-    body.style.background = 'white';
+      visualMode = 'off';
+  }
+  else if (visualMode == 'off') {
+      body.style.background = '#111111';
+
+      visualMode = 'on';
+  }
+  else if (visualMode == 'none') {
+      visualMode = 'on';
+      lightModeToggle();
   }
 }
