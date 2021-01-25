@@ -1,17 +1,18 @@
+// Messages and shit
 var step = 145;
-
 var loaded = 0;
 
+// Login Cookie Junk
 var theSessionKey = getCookie("sessionKey");
-
 var name = "sessionKey=";
 var decodedCookie = decodeURIComponent(document.cookie);
+var ca = decodedCookie.split(';');
 
 // Light mode stuff
 var visualMode = 'none';
 var body = document.getElementsByTagName('body')[0];
 
-var ca = decodedCookie.split(';');
+// Starts checking SessionKey cookie
 for(var i = 0; i <ca.length; i++) {
     var c = ca[i];
     while (c.charAt(0) == ' ') {
@@ -22,6 +23,7 @@ for(var i = 0; i <ca.length; i++) {
 
       if (theSessionKey === "") sessionKey = 'none';
 
+      // Fetches messages from server
       fetch(`https://the-bagel.herokuapp.com/?data=messages&sessionKey=${sessionKey}`)
         .then(response => response.json())
         .then(data => {
@@ -29,11 +31,14 @@ for(var i = 0; i <ca.length; i++) {
   
             console.log(data);
                 
+            // Puts messages from server in reverse order into an array
             for(var i in data)
                 arrayData.unshift(i);
     
+            // Logs the array because why not
             console.log(arrayData);
     
+            // Cycles through and displays each message in the arrayData array
             arrayData.forEach(function (arrayItem) {
                 let bodyElement = document.body;
     
@@ -70,6 +75,7 @@ for(var i = 0; i <ca.length; i++) {
                 loaded += 1;
             });
 
+            // Changes what is shown to the user depending on whether the user was logged in or not
             if (loaded >= 2) {
                 var sendButton = document.getElementById('sendButton');
                 var loginButton = document.getElementById('loginButton');
@@ -97,6 +103,8 @@ for(var i = 0; i <ca.length; i++) {
         });
     }
 }
+
+// Displays placeholder message while trying to fetch the messages from the server
 
 let bodyElement = document.body;
     
@@ -132,6 +140,7 @@ messageAuthorContainer.appendChild(messageAuthorElement);
 messageContentContainer.appendChild(messageContentElement);
 
 
+// Sends a message to the board
 function send() {
     var message = document.getElementById('messageBox');
     var messageBox = document.getElementById('warningBox');
@@ -205,6 +214,7 @@ function send() {
     }
 }
 
+// Receives message data from server
 function receive() {
     arrayData.forEach(function (arrayItem) {
         var cardElement = document.getElementById(`message-card-${arrayItem}`)
@@ -289,6 +299,7 @@ function receive() {
     }
 }
 
+// Checks for a cookie
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -304,6 +315,7 @@ function getCookie(cname) {
     return "";
 }
 
+// Light mode function... ewwww
 function lightModeToggle() {
   if (visualMode == 'on') {
       body.style.background = 'gray';
