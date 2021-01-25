@@ -7,6 +7,10 @@ var theSessionKey = getCookie("sessionKey");
 var name = "sessionKey=";
 var decodedCookie = decodeURIComponent(document.cookie);
 
+// Light mode stuff
+var visualMode = 'none';
+var body = document.getElementsByTagName('body')[0];
+
 var ca = decodedCookie.split(';');
 for(var i = 0; i <ca.length; i++) {
     var c = ca[i];
