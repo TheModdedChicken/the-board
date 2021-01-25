@@ -14,7 +14,7 @@
     </head>
 
     <body>
-        <script defer src="./index.js"></script>
+        <script defer src="./dev.js"></script>
         <div class="main" id="main">
             <canvas class="warningBox" id="warningBox"></canvas>
                 <h3 class="warningText" id="warningText"></h3>
@@ -27,7 +27,19 @@
 
             <button class="back-button" onclick="location.href = 'https://themoddedchicken.thedev.id/';"><</button>
 
+            <h4 style="font-family:'Inter'; font-weight: 500; color: #111111; position: absolute; top: 12px; left: 30px; cursor:default;">TURN OFF LIGHT MODE</h4>
+
             <canvas class="settingsBox" id="settingsBox"></canvas>
+                <div class="settings-div" id="settings-div">
+                    <h2 class="settings-header">Settings</h2>
+                    <div class="light-mode-setting">
+                        <h3 class="light-mode-setting-text">Light Mode</h3>
+                        <label class="light-mode-switch" onchange="lightModeToggle();">
+                            <input type="checkbox">
+                            <span class="light-mode-slider-round"></span>
+                        </label>
+                    </div>
+                </div>
         </div>
     </body>
 </html>

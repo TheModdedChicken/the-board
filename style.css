@@ -249,6 +249,8 @@ body::-webkit-scrollbar-thumb {
     visibility: hidden;
 }
 
+/* Settings Menu */
+
 .settingsBox {
     position: absolute;
     left: 57%;
@@ -259,6 +261,115 @@ body::-webkit-scrollbar-thumb {
     border-radius: 14px;
     border-color: #222222;
 }
+
+.settings-div {
+    position: absolute;
+    left: 57%;
+    top: 420px;
+    width: 375px;
+    height: 378px;
+}
+
+.settings-header {
+    position: relative;
+    top: 14px;
+    text-align: center;
+    color: white;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 20px;
+}
+
+/* Light Mode Settings Switch */
+
+.light-mode-setting {
+    position: relative;
+    top: 300px;
+    color: white;
+    text-align: center;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 20px;
+    /*background-color: teal;*/
+}
+
+
+.light-mode-setting-text {
+    position: relative;
+    color: white;
+    text-align: left;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 18px;
+    top: 15px;
+    left: 28%;
+}
+
+.light-mode-switch {
+    position: relative;
+    display: inline-block;
+    top: -5px;
+    left: 14%;
+    width: 50px;
+    height: 24px;
+}
+
+.light-mode-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.light-mode-slider-round {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.light-mode-slider-round:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .light-mode-slider-round {
+  background-color: #2196F3;
+}
+
+input:focus + .light-mode-slider-round {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .light-mode-slider-round:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.light-mode-slider-round {
+  border-radius: 34px;
+}
+
+.light-mode-slider-round:before {
+  border-radius: 50%;
+}
+
+/* Light Mode Settings Switch End*/
+
+/* Settings Menu End */
+
 
 /* Message Formating */
 

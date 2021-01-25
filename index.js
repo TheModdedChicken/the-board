@@ -299,3 +299,11 @@ function getCookie(cname) {
     }
     return "";
 }
+
+function lightModeToggle(mode) {
+  if (mode == 'on') {
+    var body = document.getElementsByTagName('body')[0];
+
+    body.style.background = 'white';
+  }
+}
