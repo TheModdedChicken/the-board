@@ -230,7 +230,7 @@ body::-webkit-scrollbar-thumb {
 
 .warningBox {
     position: fixed;
-    left: 57%;
+    left: 58%;
     top: 10px;
     width: 325px;
     height: 50px;
@@ -243,9 +243,10 @@ body::-webkit-scrollbar-thumb {
     position: fixed;
     font-family: 'Inter';
     font-weight: 500;
-    left: 57%;
-    top: 27px;
+    left: 61%;
+    top: 25px;
     color: white;
+    z-index: 200;
     visibility: hidden;
 }
 
